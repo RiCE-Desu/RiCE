@@ -17,7 +17,7 @@ export default function LandingPage({ isPlaying, togglePlay, audioReady }) {
           .select('*')
           .order('id', { ascending: false })
           .limit(1);
-        
+
         if (blogData && blogData.length > 0) {
           setLatestBlog(blogData[0]);
         }
@@ -34,7 +34,7 @@ export default function LandingPage({ isPlaying, togglePlay, audioReady }) {
           const { data: { publicUrl } } = supabase.storage
             .from('photos')
             .getPublicUrl(photoData[0].storage_path);
-            
+
           setPinnedPhoto({ ...photoData[0], url: publicUrl });
         } else {
           // Fallback: ambil foto paling terakhir dimasukkan jika tidak ada yang di-featured sama sekali
@@ -48,7 +48,7 @@ export default function LandingPage({ isPlaying, togglePlay, audioReady }) {
             const { data: { publicUrl } } = supabase.storage
               .from('photos')
               .getPublicUrl(latestPhoto[0].storage_path);
-              
+
             setPinnedPhoto({ ...latestPhoto[0], url: publicUrl });
           }
         }
@@ -75,7 +75,7 @@ export default function LandingPage({ isPlaying, togglePlay, audioReady }) {
     // Menggunakan flexbox untuk memosisikan seluruh bento grid tepat di tengah layar monitor secara seimbang
     <div className="min-h-screen w-screen bg-white text-black font-sans p-4 md:p-8 flex items-center justify-center box-border selection:bg-black selection:text-white">
       <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-4 grid-rows-6 md:grid-rows-3 gap-4 h-auto md:h-[85vh] items-stretch">
-        
+
         {/* PANEL 1: LOGO & SOSMED */}
         <div className="border-4 border-black p-6 bg-white flex flex-col justify-between transform transition-all duration-300 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] group">
           <div>
@@ -106,7 +106,7 @@ export default function LandingPage({ isPlaying, togglePlay, audioReady }) {
             <span className="font-mono text-xs uppercase font-bold bg-black text-white px-1">LOCAL BEAT</span>
             <Link to="/songs" className="text-[10px] font-mono font-black underline opacity-0 group-hover/music:opacity-100 transition-opacity">JUKEBOX ↗</Link>
           </div>
-          
+
           <Link to="/songs" className="my-4 flex items-center gap-3 cursor-pointer text-left">
             <div className={`w-12 h-12 border-2 border-black rounded-full flex items-center justify-center bg-black text-white font-bold text-xs shrink-0 ${isPlaying ? 'animate-spin-slow' : ''}`}>★</div>
             <div className="overflow-hidden w-40">
@@ -141,19 +141,11 @@ export default function LandingPage({ isPlaying, togglePlay, audioReady }) {
           <div className="mt-4 border-t-2 border-black pt-2 font-mono text-[9px] text-gray-500">// CLICK FOR ALL ARCHIVES</div>
         </Link>
 
-        {/* PANEL 6: MARQUEE */}
-        <div className="border-4 border-black md:col-span-2 p-4 bg-black text-white flex items-center overflow-hidden relative group">
-          <div className="flex space-x-8 animate-marquee whitespace-nowrap font-black tracking-widest text-sm uppercase">
-            <span>RAIS PORTFOLIO 2026 • COMIC STYLE LAB • ALL RIGHTS RESERVED • </span>
-            <span>RAIS PORTFOLIO 2026 • COMIC STYLE LAB • ALL RIGHTS RESERVED • </span>
-          </div>
-        </div>
-
         {/* 📷 PANEL 7: SECTION PHOTOGRAPHY */}
         <Link to="/photography" className="border-4 border-black p-4 bg-white flex flex-col justify-between transform transition-all duration-300 hover:translate-y-1 hover:translate-x-1 hover:shadow-[8px_-8px_0px_0px_rgba(0,0,0,1)] group cursor-pointer text-left md:col-start-3 md:row-start-3">
           <div className="flex flex-col h-full justify-between">
             <div className="flex justify-between items-center border-b border-black pb-1 mb-2">
-              <span className="font-mono text-[10px] uppercase font-bold bg-black text-white px-1">PINNED GALLERY ↗</span>
+              <span className="font-mono text-[10px] uppercase font-bold bg-black text-white px-1">GALLERY ↗</span>
             </div>
             <div className="border-2 border-black overflow-hidden bg-gray-100 flex-grow max-h-[65px] md:max-h-[85px] mb-2 flex items-center justify-center">
               {pinnedPhoto ? (
@@ -165,6 +157,14 @@ export default function LandingPage({ isPlaying, togglePlay, audioReady }) {
             <p className="text-xs font-black uppercase truncate m-0">{pinnedPhoto ? pinnedPhoto.title : "SHOTS LIBRARY"}</p>
           </div>
         </Link>
+
+        {/* PANEL 6: MARQUEE */}
+        <div className="border-4 border-black md:col-span-2 p-4 bg-black text-white flex items-center overflow-hidden relative group">
+          <div className="flex space-x-8 animate-marquee whitespace-nowrap font-black tracking-widest text-sm uppercase">
+            <span>RAIS PORTFOLIO • COMIC STYLE LAB • ALL RIGHTS RESERVED • </span>
+            <span>RAIS PORTFOLIO • COMIC STYLE LAB • ALL RIGHTS RESERVED • </span>
+          </div>
+        </div>
 
       </div>
     </div>
