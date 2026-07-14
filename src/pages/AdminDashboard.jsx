@@ -172,12 +172,34 @@ export default function AdminDashboard() {
     setBlogTitle(''); setBlogContent(''); refreshAllData();
   };
 
-  const handlePinBlog = async (id) => {
-    await supabase.from('blogs').update({ is_featured: false }).neq('id', 0);
-    await supabase.from('blogs').update({ is_featured: true }).eq('id', id);
-    refreshAllData();
-  };
+  const handlePinBlog = async (id, isCurrentlyFeatured) => {
+    try {
+      // 1. Matikan PIN semua blog terlebih dahulu secara global
+      const { error: resetErr } = await supabase
+        .from('blogs')
+        .update({ is_featured: false })
+        .not('id', 'is', null); // Update semua baris yang punya ID
 
+      if (resetErr) throw resetErr;
+
+      // 2. Kalau sebelumnya tidak di-pin, maka kita aktifkan yang baru
+      if (!isCurrentlyFeatured) {
+        const { error: pinErr } = await supabase
+          .from('blogs')
+          .update({ is_featured: true })
+          .eq('id', id); 
+          
+        if (pinErr) throw pinErr;
+      }
+
+      refreshAllData();
+      alert("Status PIN berhasil diubah!");
+    } catch (err) {
+      console.error("Error Detail:", err);
+      alert("Gagal update database: " + err.message);
+    }
+  };
+  
   const handleDeleteBlog = async (id) => {
     if (!confirm("Hapus blog ini?")) return;
     await supabase.from('blogs').delete().eq('id', id);
