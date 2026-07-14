@@ -99,8 +99,9 @@ function PetFollower() {
   };
 
   return (
+    // DI SINI PERUBAHANNYA: Menambahkan class 'hidden md:block'
     <div
-      className="fixed pointer-events-none z-50 select-none"
+      className="fixed pointer-events-none z-50 select-none hidden md:block"
       style={{
         left: `${position.x}px`,
         top: `${position.y + 35}px`, 
