@@ -93,7 +93,7 @@ export default function LandingPage({ isPlaying, togglePlay, audioReady }) {
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 bg-[radial-gradient(circle,_#000_10%,_transparent_11%)] bg-[length:12px_12px] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black_70%)]"></div>
           <div className="relative z-10">
             <p className="font-mono text-sm uppercase tracking-widest mb-2 bg-black text-white px-2 py-1 inline-block transform -rotate-1">*BOOM* WELCOME EARTHLING!</p>
-            <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none my-4 filter drop-shadow-[4px_4px_0px_rgba(0,0,0,1)] text-stroke">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter leading-tight md:leading-none my-4 filter drop-shadow-[4px_4px_0px_rgba(0,0,0,1)] text-stroke break-words">
               Hi, my name is <span className="bg-black text-white px-3 py-1 inline-block transform rotate-1 transition-transform group-hover:scale-105 duration-200">Rais</span>
             </h1>
             <p className="font-serif italic text-lg text-gray-700 mt-2">"Web Developer & Photographer"</p>
