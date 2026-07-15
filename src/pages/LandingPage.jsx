@@ -4,7 +4,7 @@ import { supabase } from '../supabaseClient';
 
 // Terima props musik dari App.jsx
 export default function LandingPage({ isPlaying, togglePlay, audioReady }) {
-  const [latestBlog, setLatestBlog] = useState({ title: "Belum ada tulisan", content: "Mulai nulis sesuatu di halaman admin, Is!" });
+  const [latestBlog, setLatestBlog] = useState({ title: "Belum ada tulisan", content: "Tunggu gw nulis yee kalo lagi mau" });
   const [pinnedPhoto, setPinnedPhoto] = useState(null);
   const [pinnedSong, setPinnedSong] = useState({ title: "Your Uploaded Track", artist: "Continuous Background Audio" });
 
